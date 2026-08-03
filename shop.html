@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="catalog-placeholder.css" />
     <link rel="stylesheet" href="checkout.css" />
+    <link rel="stylesheet" href="product-details.css" />
   </head>
   <body>
     <header class="nav"><a class="logo" href="index.html" aria-label="Straight Line Electrical home"><img src="sle-logo.png" alt="Straight Line Electrical" /></a><nav><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="shop.html">Shop</a><a href="index.html#contact">Contact</a></nav><a class="nav-cta" href="index.html#contact">Request a quote <span>↗</span></a></header>
@@ -19,6 +20,7 @@
       <div class="catalog-tools"><span id="product-count">Loading products…</span><label><span class="sr-only">Search products</span><input id="search" type="search" placeholder="Search name or SKU" /></label></div>
       <div class="catalog-layout"><aside class="catalog-nav"><p class="eyebrow">Browse the range</p><div id="category-nav"></div></aside><section class="catalog-grid" id="catalog-grid" aria-live="polite"></section></div>
     </main>
+    <dialog class="product-details-dialog" id="product-details"><button class="dialog-close" type="button" aria-label="Close product details">×</button><p class="eyebrow" id="detail-sku"></p><h2 id="detail-name"></h2><p class="detail-price" id="detail-price"></p><div class="detail-description" id="detail-description"></div><a class="detail-source" id="detail-source" target="_blank" rel="noopener">View manufacturer information ↗</a></dialog>
     <footer><a class="logo" href="index.html"><img src="sle-logo.png" alt="Straight Line Electrical" /></a><p>© 2026 Straight Line Electrical. Auto electrical, parts & Haltech.</p><a href="terms.html">Terms & Conditions</a><a href="index.html">Back to site ↑</a></footer>
     <script src="cart.js"></script>
     <script src="product-data.js"></script>
@@ -28,6 +30,12 @@
       const count = document.querySelector('#product-count');
       const search = document.querySelector('#search');
       const categoryNav = document.querySelector('#category-nav');
+      const detailsDialog = document.querySelector('#product-details');
+      const detailSku = document.querySelector('#detail-sku');
+      const detailName = document.querySelector('#detail-name');
+      const detailPrice = document.querySelector('#detail-price');
+      const detailDescription = document.querySelector('#detail-description');
+      const detailSource = document.querySelector('#detail-source');
       const initialSku = new URLSearchParams(window.location.search).get('sku');
       const sort = document.createElement('select');
       sort.id = 'product-sort';
@@ -44,16 +52,19 @@
       }
       function render(list) { const byPrice = [...list].sort((a, b) => Number(b.price.replace(/[^0-9.]/g, '')) - Number(a.price.replace(/[^0-9.]/g, ''))); grid.innerHTML = byPrice.map(card).join(''); count.textContent = `${list.length} products · Prices include GST · Highest price first`; }
       function renderNavigation() { const categories = [...new Set(products.map(p => p.category))].sort(); categoryNav.innerHTML = `<button class="browse-all ${!selectedCategory ? 'active' : ''}" data-category="">All products <span>${products.length}</span></button>` + categories.map(category => { const group = products.filter(p => p.category === category); const subs = [...new Set(group.map(p => p.subcategory))].sort(); return `<details class="category-group" ${selectedCategory === category ? 'open' : ''}><summary><button class="category-button ${selectedCategory === category && !selectedSubcategory ? 'active' : ''}" data-category="${category}">${category}<span>${group.length}</span></button></summary><div class="subcategory-list">${subs.map(sub => `<button class="${selectedCategory === category && selectedSubcategory === sub ? 'active' : ''}" data-category="${category}" data-subcategory="${sub}">${sub}<span>${group.filter(p => p.subcategory === sub).length}</span></button>`).join('')}</div></details>`; }).join(''); }
-      function applyFilters() { const term = search.value.trim().toLowerCase(); render(products.filter(p => (!selectedCategory || p.category === selectedCategory) && (!selectedSubcategory || p.subcategory === selectedSubcategory) && (!term || `${p.sku} ${p.name}`.toLowerCase().includes(term)))); }
+      function applyFilters() { const term = search.value.trim().toLowerCase(); render(products.filter(p => (!selectedCategory || p.category === selectedCategory) && (!selectedSubcategory || p.subcategory === selectedSubcategory) && (!term || `${p.sku} ${p.name} ${p.description || ''}`.toLowerCase().includes(term)))); }
       categoryNav.addEventListener('click', event => { const button = event.target.closest('button[data-category]'); if (!button) return; event.preventDefault(); selectedCategory = button.dataset.category; selectedSubcategory = button.dataset.subcategory || ''; renderNavigation(); applyFilters(); });
       search.addEventListener('input', applyFilters);
       sort.addEventListener('change', applyFilters);
       card = product => {
         const subject = encodeURIComponent(`Enquiry - ${product.sku} ${product.name}`);
         const media = product.image ? `<img loading="lazy" src="${product.image}" alt="${product.name}" />` : `<div class="product-placeholder"><img class="product-logo-placeholder" src="sle-logo.png" alt="Straight Line Electrical" /></div>`;
-        return `<article class="product">${media}<div class="product-info"><p class="sku">${product.sku} &middot; ${product.category}</p><h3>${product.name}</h3><strong>${money(product.price)}</strong><div class="product-actions"><button class="product-add" type="button" data-add-sku="${product.sku}">Add to cart</button><a href="mailto:Sevan@straightlineelectrical.com.au?subject=${subject}">Enquire <span>&rarr;</span></a></div></div></article>`;
+        const details = product.description ? `<button class="product-details-button" type="button" data-details-sku="${product.sku}">Details</button>` : '';
+        return `<article class="product">${media}<div class="product-info"><p class="sku">${product.sku} &middot; ${product.category}</p><h3>${product.name}</h3><strong>${money(product.price)}</strong><div class="product-actions"><button class="product-add" type="button" data-add-sku="${product.sku}">Add to cart</button>${details}<a href="mailto:Sevan@straightlineelectrical.com.au?subject=${subject}">Enquire <span>&rarr;</span></a></div></div></article>`;
       };
-      grid.addEventListener('click', event => { const button = event.target.closest('[data-add-sku]'); if (!button) return; const product = products.find(item => item.sku === button.dataset.addSku); if (!product) return; SLECart.add(product); button.textContent = 'Added ✓'; setTimeout(() => { button.textContent = 'Add to cart'; }, 1100); });
+      grid.addEventListener('click', event => { const detailsButton = event.target.closest('[data-details-sku]'); if (detailsButton) { const product = products.find(item => item.sku === detailsButton.dataset.detailsSku); if (!product) return; detailSku.textContent = `${product.sku} · ${product.category}`; detailName.textContent = product.name; detailPrice.textContent = product.price; detailDescription.textContent = product.description; detailSource.href = product.sourceUrl; detailsDialog.showModal(); return; } const button = event.target.closest('[data-add-sku]'); if (!button) return; const product = products.find(item => item.sku === button.dataset.addSku); if (!product) return; SLECart.add(product); button.textContent = 'Added ✓'; setTimeout(() => { button.textContent = 'Add to cart'; }, 1100); });
+      detailsDialog.querySelector('.dialog-close').addEventListener('click', () => detailsDialog.close());
+      detailsDialog.addEventListener('click', event => { if (event.target === detailsDialog) detailsDialog.close(); });
       render = list => { const ordered = [...list].sort((a, b) => sort.value === 'price-asc' ? Number(a.price.replace(/[^0-9.]/g, '')) - Number(b.price.replace(/[^0-9.]/g, '')) : sort.value === 'name-asc' ? a.name.localeCompare(b.name) : Number(b.price.replace(/[^0-9.]/g, '')) - Number(a.price.replace(/[^0-9.]/g, ''))); grid.innerHTML = ordered.map(card).join(''); count.textContent = `${list.length} products · Prices include GST`; };
       const cartCta = document.querySelector('.nav-cta'); cartCta.href = 'checkout.html'; cartCta.classList.add('cart-link'); cartCta.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 1.9-1.5L21 7H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>Checkout <span class="cart-count" data-cart-count>0</span>';
       SLECart.updateBadges(); renderNavigation(); if (initialSku) { search.value = initialSku; applyFilters(); } else { render(products); }

@@ -1,0 +1,8 @@
+.product-details-button { display:inline-flex; align-items:center; justify-content:center; border:1px solid #6d6d6d; padding:10px 12px; background:transparent; color:#eee; font:800 .62rem Manrope,Arial,sans-serif; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
+.product-details-dialog { width:min(620px,calc(100vw - 32px)); max-height:min(680px,calc(100vh - 32px)); border:1px solid #686868; padding:36px; background:#171717; color:#f4f4f4; box-shadow:0 20px 80px #000b; }
+.product-details-dialog::backdrop { background:#000b; }
+.product-details-dialog h2 { max-width:90%; margin:9px 0 10px; font-size:clamp(1.6rem,4vw,2.5rem); line-height:1.05; letter-spacing:-.05em; }
+.detail-price { margin:0 0 26px; color:#fff; font-size:1.25rem; font-weight:800; }
+.detail-description { max-height:330px; overflow:auto; padding:0 12px 0 0; white-space:pre-line; color:#d2d2d2; font-size:.9rem; line-height:1.7; }
+.detail-source { display:inline-block; margin-top:28px; border-bottom:1px solid var(--blue); padding-bottom:5px; color:#fff; font:800 .66rem Manrope,Arial,sans-serif; letter-spacing:.08em; text-transform:uppercase; }
+.dialog-close { position:absolute; top:16px; right:18px; border:0; background:transparent; color:#fff; font-size:2rem; line-height:1; cursor:pointer; }
