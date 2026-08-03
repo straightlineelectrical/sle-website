@@ -1,4 +1,4 @@
-.product-details-button { display:inline-flex; align-items:center; justify-content:center; border:1px solid #6d6d6d; padding:10px 12px; background:transparent; color:#eee; font:800 .62rem Manrope,Arial,sans-serif; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
+.product-actions .product-details-button { display:inline-flex; align-items:center; justify-content:center; border:1px solid #6d6d6d; padding:10px 12px; background:transparent; color:#eee; font:800 .62rem Manrope,Arial,sans-serif; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
 .product-details-dialog { width:min(620px,calc(100vw - 32px)); max-height:min(680px,calc(100vh - 32px)); border:1px solid #686868; padding:36px; background:#171717; color:#f4f4f4; box-shadow:0 20px 80px #000b; }
 .product-details-dialog::backdrop { background:#000b; }
 .product-details-dialog h2 { max-width:90%; margin:9px 0 10px; font-size:clamp(1.6rem,4vw,2.5rem); line-height:1.05; letter-spacing:-.05em; }

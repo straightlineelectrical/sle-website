@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="hero-photo.css" />
     <link rel="stylesheet" href="featured-products.css" />
+    <link rel="stylesheet" href="product-details.css" />
     <link rel="stylesheet" href="checkout.css" />
   </head>
   <body>
@@ -106,8 +107,12 @@
         addButton.type = 'button';
         addButton.textContent = 'Add to cart';
         addButton.addEventListener('click', () => { SLECart.add(product); addButton.textContent = 'Added ✓'; setTimeout(() => { addButton.textContent = 'Add to cart'; }, 1100); });
+        const detailsLink = document.createElement('a');
+        detailsLink.className = 'product-details-button';
+        detailsLink.href = `shop.html?sku=${encodeURIComponent(sku)}&details=1`;
+        detailsLink.textContent = 'Details';
         enquiry.replaceWith(actions);
-        actions.append(addButton, enquiry);
+        actions.append(addButton, detailsLink, enquiry);
       });
     </script>
   </body>
