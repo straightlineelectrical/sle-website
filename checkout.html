@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Submit an order request to Straight Line Electrical." />
+    <title>Checkout — Straight Line Electrical</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="checkout.css" />
+  </head>
+  <body>
+    <header class="nav"><a class="logo" href="index.html" aria-label="Straight Line Electrical home"><img src="sle-logo.png" alt="Straight Line Electrical" /></a><nav><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="shop.html">Shop</a><a href="index.html#contact">Contact</a></nav><a class="nav-cta cart-link" href="checkout.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 1.9-1.5L21 7H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>Checkout <span class="cart-count" data-cart-count>0</span></a></header>
+    <main class="checkout">
+      <div class="checkout-intro"><p class="eyebrow">Haltech order request</p><h1>Your <em>cart.</em></h1><p>Submit your order request and Straight Line Electrical will confirm stock, freight and payment details before processing your order.</p></div>
+      <div class="checkout-layout">
+        <section class="checkout-panel"><h2>Items</h2><div id="checkout-items" class="checkout-items"></div></section>
+        <aside class="checkout-panel checkout-summary"><h2>Order summary</h2><div class="summary-row"><span>Items</span><span id="summary-items">0</span></div><div class="summary-row summary-total"><span>Estimated total</span><span id="summary-total">$0.00</span></div><form id="checkout-form" class="checkout-form" action="https://formsubmit.co/Sevan@straightlineelectrical.com.au" method="POST"><input type="hidden" name="_subject" value="New SLE website order request" /><input type="hidden" name="_template" value="table" /><input type="hidden" name="order_summary" id="order-summary" /><input type="hidden" name="order_total" id="order-total" /><input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" /><div class="form-row"><label>First name<input name="first_name" required /></label><label>Last name<input name="last_name" required /></label></div><label>Email address<input type="email" name="email" required /></label><label>Phone number<input type="tel" name="phone" required /></label><label>Delivery or pickup<select name="fulfilment" required><option value="" disabled selected>Select an option</option><option>Delivery</option><option>Pickup</option></select></label><label>Delivery address (if required)<textarea name="address" rows="3" placeholder="Street, suburb, state and postcode"></textarea></label><label>Order notes<textarea name="notes" rows="3" placeholder="Vehicle details, delivery notes or anything else we should know"></textarea></label><button class="button" type="submit">Submit order request <span>→</span></button></form><p class="checkout-note">No payment is taken on this page. We’ll confirm availability and send payment details before the order is processed.</p></aside>
+      </div>
+    </main>
+    <footer><a class="logo" href="index.html"><img src="sle-logo.png" alt="Straight Line Electrical" /></a><p>Performance Auto Electrical<br />0431 186 347 · © 2026 Straight Line Electrical</p><a href="terms.html">Terms &amp; Conditions</a><a href="shop.html">Continue shopping ↑</a></footer>
+    <script src="cart.js"></script>
+    <script>
+      const itemsNode = document.querySelector('#checkout-items');
+      const form = document.querySelector('#checkout-form');
+      const itemCount = document.querySelector('#summary-items');
+      const totalNode = document.querySelector('#summary-total');
+      const orderSummary = document.querySelector('#order-summary');
+      const orderTotal = document.querySelector('#order-total');
+      const esc = value => String(value).replace(/[&<>'"]/g, char => ({ '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;' }[char]));
+      function renderCart() {
+        const items = SLECart.read();
+        SLECart.updateBadges();
+        itemCount.textContent = SLECart.count();
+        totalNode.textContent = SLECart.money(SLECart.total());
+        orderSummary.value = items.map(item => `${item.quantity} × ${item.sku} — ${item.name} (${item.price} each)`).join('\n');
+        orderTotal.value = SLECart.money(SLECart.total());
+        if (!items.length) { itemsNode.innerHTML = '<p class="empty-cart">Your cart is empty. <a href="shop.html">Browse the Haltech range</a>.</p>'; form.style.display = 'none'; return; }
+        form.style.display = 'grid';
+        itemsNode.innerHTML = items.map(item => `<article class="checkout-item"><${item.image ? 'img src="' + esc(item.image) + '" alt=""' : 'div class="checkout-thumb"'}>${item.image ? '' : '</div>'}<div><p>${esc(item.sku)}</p><h3>${esc(item.name)}</h3><strong>${esc(item.price)}</strong></div><div><div class="quantity"><button type="button" data-cart-action="decrease" data-sku="${esc(item.sku)}" aria-label="Decrease quantity">−</button><span>${item.quantity}</span><button type="button" data-cart-action="increase" data-sku="${esc(item.sku)}" aria-label="Increase quantity">+</button></div><button class="remove-item" type="button" data-cart-action="remove" data-sku="${esc(item.sku)}">Remove</button></div></article>`).join('');
+      }
+      itemsNode.addEventListener('click', event => { const button = event.target.closest('[data-cart-action]'); if (!button) return; const item = SLECart.read().find(entry => entry.sku === button.dataset.sku); if (!item) return; if (button.dataset.cartAction === 'increase') SLECart.setQuantity(item.sku, item.quantity + 1); if (button.dataset.cartAction === 'decrease') SLECart.setQuantity(item.sku, item.quantity - 1); if (button.dataset.cartAction === 'remove') SLECart.remove(item.sku); renderCart(); });
+      form.addEventListener('submit', () => { SLECart.clear(); });
+      renderCart();
+    </script>
+  </body>
+</html>

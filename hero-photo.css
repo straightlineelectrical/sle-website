@@ -1,0 +1,5 @@
+.hero-art.photo { isolation:isolate; height:auto; aspect-ratio:16 / 10; padding:14px; border:1px solid #81211e; background:#000; box-shadow:0 8px 18px #e106001c, inset 0 0 0 8px #000; }
+.hero-art.photo:before { content:none; }
+.hero-art.photo:after { content:""; position:absolute; z-index:1; inset:0; pointer-events:none; background:linear-gradient(135deg,#00000055 0%,transparent 42%,transparent 70%,#1800002b 100%); box-shadow:inset 0 0 24px #0000007a; }
+.hero-art.photo img { display:block; width:100%; height:100%; object-fit:cover; object-position:100% center; transform:none; filter:contrast(1.06) saturate(1.07) brightness(1.03); }
+@media (max-width:700px) { .hero-art.photo { aspect-ratio:16 / 11; } }
