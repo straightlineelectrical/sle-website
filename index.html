@@ -3,118 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Straight Line Electrical — automotive electrical diagnostics, repairs, upgrades and quality auto parts." />
+    <meta name="description" content="Melbourne mobile auto electrician for diagnostics, performance wiring, engine management and Haltech parts." />
     <title>Straight Line Electrical — Performance Auto Electrical</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="hero-photo.css" />
-    <link rel="stylesheet" href="featured-products.css" />
-    <link rel="stylesheet" href="product-details.css" />
     <link rel="stylesheet" href="checkout.css" />
+    <link rel="stylesheet" href="customer-home.css" />
   </head>
-  <body>
-    <div class="grain"></div>
-    <header class="nav">
-      <a class="logo" href="#top" aria-label="Straight Line Electrical home"><img src="sle-logo.png" alt="Straight Line Electrical" /></a>
+  <body class="customer-home">
+    <header class="customer-nav">
+      <a class="customer-logo" href="#top" aria-label="Straight Line Electrical home"><img src="sle-logo.png" alt="Straight Line Electrical" /></a>
       <nav aria-label="Primary navigation">
-        <a href="#about">About</a>
         <a href="#services">Services</a>
-        <a href="shop.html">Shop</a>
+        <a href="#about">About</a>
+        <a href="shop.html">Haltech shop</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="nav-cta" href="#contact">Request a quote <span>↗</span></a>
+      <a class="nav-call" href="tel:+61431186347">Call Sevan <span>0431 186 347</span></a>
     </header>
 
     <main id="top">
-      <section class="hero">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Performance auto electrical · Haltech dealer</p>
-          <h1>Built to<br /><em>perform.</em></h1>
-          <p class="intro">Performance auto electrical for modified street cars, track builds and serious 4WDs — from fault-finding to full engine-management systems.</p>
-          <a class="button" href="#contact">Discuss your build <span>↓</span></a>
+      <section class="customer-hero">
+        <div class="hero-copy">
+          <p class="location-pill"><span></span> Melbourne mobile auto electrician</p>
+          <h1>Auto electrical help<br /><em>where you need it.</em></h1>
+          <p class="hero-intro">Diagnostics, repairs, performance wiring and Haltech engine management for street cars, track builds and serious 4WDs.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="tel:+61431186347">Call 0431 186 347 <span>↗</span></a>
+            <a class="button button-secondary" href="#contact">Request a quote <span>↓</span></a>
+          </div>
+          <p class="hero-note">Mobile service across Melbourne · Registered Haltech dealer</p>
         </div>
-        <div class="hero-art photo reveal" aria-hidden="true"><img src="sle-car-art-wheelie.png" alt="" /></div>
+        <div class="hero-artwork"><img src="sle-car-art-wheelie.png" alt="Straight Line Electrical performance car artwork" /><div class="art-caption">Built for the road, track and beyond.</div></div>
       </section>
 
-      <section class="statement" id="about">
-        <p class="eyebrow">Mobile performance auto electrician</p>
-        <h2>Auto electrical<br /><em>that comes to you.</em></h2>
-        <div class="statement-detail"><p>Melbourne-based mobile diagnostics, repairs and performance wiring for street cars, track builds and serious 4WDs.</p><a href="#services">Explore our services <span>→</span></a></div>
+      <section class="confidence-bar" aria-label="Straight Line Electrical highlights">
+        <div><b>Mobile service</b><span>We come to you</span></div>
+        <div><b>Clear diagnostics</b><span>Find the fault first</span></div>
+        <div><b>Performance ready</b><span>Wiring & engine management</span></div>
+        <div><b>Haltech dealer</b><span>Parts & advice in one place</span></div>
       </section>
 
-      <section class="services" id="services">
-        <div class="section-top"><p class="eyebrow">What we do</p><span>01—03</span></div>
-        <article><span>01</span><h3>Performance diagnostics</h3><p>Electrical fault-finding, sensor testing and data-driven troubleshooting.</p><i>↗</i></article>
-        <article><span>02</span><h3>Engine management</h3><p>Haltech ECUs, wiring, sensors and integration for a complete setup.</p><i>↗</i></article>
-        <article><span>03</span><h3>Race-ready wiring</h3><p>Custom looms, power distribution, relays and electrical upgrades built to last.</p><i>↗</i></article>
-      </section>
-
-      <section class="shop" id="shop">
-        <div class="shop-heading"><div><p class="eyebrow">Haltech parts & performance</p><h2>Featured <em>products.</em></h2></div><p>All prices include GST.<br />Need a hand choosing? We’ll help match the right part to your build.<br /><a class="catalog-link" href="shop.html">View all products →</a></p></div>
-        <div class="product-grid">
-          <article class="product"><img src="products/catalog/HT-068000.jpg" alt="Haltech uC-10 digital dash" /><div class="product-info"><p class="sku">HT-068000 · Digital displays</p><h3>Haltech uC-10 Digital Dash Kit</h3><strong>$3,199.00</strong><a href="#contact">Enquire <span>→</span></a></div></article>
-          <article class="product"><img src="products/catalog/HT-067010.jpg" alt="Haltech IC-7 digital dash" /><div class="product-info"><p class="sku">HT-067010 · Digital displays</p><h3>Haltech IC-7 Digital Dash Kit</h3><strong>$1,795.00</strong><a href="#contact">Enquire <span>→</span></a></div></article>
-          <article class="product"><img src="products/catalog/HT-212000.jpg" alt="Haltech Nexus S2 ECU" /><div class="product-info"><p class="sku">HT-212000 · Engine management</p><h3>Haltech Nexus S2 ECU</h3><strong>$2,429.00</strong><a href="#contact">Enquire <span>→</span></a></div></article>
-          <article class="product"><img src="products/catalog/HT-213000.jpg" alt="Haltech Nexus S3 ECU" /><div class="product-info"><p class="sku">HT-213000 · Engine management</p><h3>Haltech Nexus S3 ECU</h3><strong>$3,175.00</strong><a href="#contact">Enquire <span>→</span></a></div></article>
-          <article class="product"><img src="products/catalog/HT-193000.jpg" alt="Haltech Nexus R3 VCU" /><div class="product-info"><p class="sku">HT-193000 · Vehicle control</p><h3>Haltech Nexus R3 VCU</h3><strong>$3,595.00</strong><a href="#contact">Enquire <span>→</span></a></div></article>
-          <article class="product"><img src="products/catalog/HT-195000.jpg" alt="Haltech Nexus R5 VCU" /><div class="product-info"><p class="sku">HT-195000 · Vehicle control</p><h3>Haltech Nexus R5 VCU</h3><strong>$6,049.00</strong><a href="#contact">Enquire <span>→</span></a></div></article>
+      <section class="help-section" id="services">
+        <div class="section-intro"><p class="eyebrow">How we can help</p><h2>Electrical problems are frustrating.<br /><em>Getting help shouldn’t be.</em></h2><p>Whether you are chasing an intermittent fault or building something serious, SLE gives you a clear answer and a reliable solution.</p></div>
+        <div class="service-cards">
+          <article class="service-card"><span>01</span><div><h3>Diagnostics & repairs</h3><p>Track down electrical faults, starting issues, charging problems, sensors and wiring issues with proper testing—not guesswork.</p><a href="#contact">Ask about a fault <i>→</i></a></div></article>
+          <article class="service-card"><span>02</span><div><h3>Performance electrical</h3><p>Clean custom wiring, relays, power distribution and upgrades designed to support the way your car is built and driven.</p><a href="#contact">Plan your build <i>→</i></a></div></article>
+          <article class="service-card"><span>03</span><div><h3>Haltech systems & parts</h3><p>ECUs, dashes, sensors, harnesses and accessories, with real advice to make sure the parts work together.</p><a href="shop.html">Browse Haltech parts <i>→</i></a></div></article>
         </div>
       </section>
 
-      <section class="quote">
-        <p class="eyebrow">The SLE standard</p>
-        <blockquote>“Clean wiring. Smart data.<br /><em>Wiring you can rely on.</em>”</blockquote>
+      <section class="process-section" id="about">
+        <div class="process-photo"><img src="sle-car-art.jpg" alt="Straight Line Electrical custom performance artwork" /></div>
+        <div class="process-copy"><p class="eyebrow">Melbourne-based · mobile service</p><h2>Good electrical work starts with <em>a straight answer.</em></h2><p>Straight Line Electrical is a mobile auto electrician focused on dependable repairs and performance-grade electrical work. You get practical advice, clean workmanship and an approach that puts your vehicle first.</p><ol><li><span>01</span><div><b>Tell us what’s happening</b><p>Call or send an enquiry with your vehicle and the issue.</p></div></li><li><span>02</span><div><b>Get a clear plan</b><p>We diagnose the problem or match the right parts to your build.</p></div></li><li><span>03</span><div><b>Get back to driving</b><p>Reliable work, with no unnecessary shortcuts.</p></div></li></ol><a class="text-link" href="#contact">Talk to Sevan <span>→</span></a></div>
       </section>
 
-      <section class="haltech">
-        <p class="eyebrow">Registered Haltech dealer</p>
-        <h2>Engine management<br />for the <em>real world.</em></h2>
-        <div class="haltech-detail"><p>From street to track, we supply the complete Haltech range and help match ECUs, wiring, sensors and accessories to the way you build and drive.</p><a href="#contact">Ask about Haltech <span>→</span></a></div>
+      <section class="featured-section">
+        <div class="featured-heading"><div><p class="eyebrow">Registered Haltech dealer</p><h2>Popular parts for<br /><em>serious builds.</em></h2></div><div><p>Shop the Haltech range, then get in touch if you would like help choosing what suits your vehicle.</p><a class="text-link" href="shop.html">View all Haltech products <span>→</span></a></div></div>
+        <div class="featured-grid" id="featured-products"></div>
       </section>
 
-      <section class="contact" id="contact">
-        <p class="eyebrow">Planning a build or chasing a fault?</p>
-        <h2>Let’s make it<br /><em>perform.</em></h2>
-        <div class="contact-layout"><div class="contact-details"><a class="contact-link" href="tel:+61431186347">0431 186 347 <span>↗</span></a><a href="mailto:Sevan@straightlineelectrical.com.au">Sevan@straightlineelectrical.com.au</a><a class="instagram-link" href="https://www.instagram.com/straightlineelectrical/" target="_blank" rel="noreferrer" aria-label="Follow Straight Line Electrical on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="instagram-dot" cx="17.5" cy="6.5" r="1"/></svg>straightlineelectrical <span>↗</span></a></div><form class="enquiry-form" action="https://formsubmit.co/e1449b8b2142de4a6e293dabd3121264" method="POST"><input type="hidden" name="_subject" value="New SLE website enquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_autoresponse" value="Thanks for contacting Straight Line Electrical. Sevan will be in touch soon."><input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off"><div class="form-row"><label>Full name<input name="name" type="text" required></label><label>Phone<input name="phone" type="tel" required></label></div><label>Email address<input name="email" type="email" required></label><label>What can we help with?<select name="enquiry_type" required><option value="" disabled selected>Select an option</option><option>Performance diagnostics</option><option>Haltech engine management</option><option>Custom wiring / electrical upgrade</option><option>Haltech product enquiry</option><option>General auto electrical</option></select></label><label>Vehicle / build details<textarea name="message" rows="5" required placeholder="Tell us about your vehicle, current setup and what you need."></textarea></label><button class="button" type="submit">Send enquiry <span>→</span></button><p class="form-note">We’ll use your details only to respond to this enquiry.</p></form></div>
+      <section class="contact-section" id="contact">
+        <div class="contact-copy"><p class="eyebrow">Let’s get it sorted</p><h2>Tell us about<br /><em>your vehicle.</em></h2><p>For a fault, a performance build or a Haltech product enquiry, send through the details and Sevan will get back to you.</p><div class="contact-methods"><a href="tel:+61431186347"><small>Call or text</small>0431 186 347 <span>↗</span></a><a href="mailto:Sevan@straightlineelectrical.com.au"><small>Email</small>Sevan@straightlineelectrical.com.au <span>↗</span></a></div><div class="social-links"><a href="https://www.instagram.com/straightlineelectrical_sle?igsh=MTNyamVkM2VrYzFsZA==" target="_blank" rel="noreferrer" aria-label="Follow SLE on Instagram">Instagram <span>↗</span></a><a href="https://www.facebook.com/p/Straight-Line-Electrical-61552702911637/" target="_blank" rel="noreferrer" aria-label="Follow SLE on Facebook">Facebook <span>↗</span></a></div></div>
+        <form class="customer-form" action="https://formsubmit.co/e1449b8b2142de4a6e293dabd3121264" method="POST"><input type="hidden" name="_subject" value="New SLE website enquiry" /><input type="hidden" name="_template" value="table" /><input type="hidden" name="_autoresponse" value="Thanks for contacting Straight Line Electrical. Sevan will be in touch soon." /><input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" /><div class="form-row"><label>Full name<input name="name" type="text" required /></label><label>Phone number<input name="phone" type="tel" required /></label></div><label>Email address<input name="email" type="email" required /></label><label>What do you need help with?<select name="enquiry_type" required><option value="" disabled selected>Select an option</option><option>Electrical fault / diagnostics</option><option>Mobile auto electrical repair</option><option>Performance wiring / upgrade</option><option>Haltech engine management</option><option>Haltech parts enquiry</option><option>General question</option></select></label><label>Vehicle and job details<textarea name="message" rows="5" required placeholder="Vehicle make/model, what is happening, and where you are located."></textarea></label><button class="button button-primary" type="submit">Send enquiry <span>→</span></button><p>We’ll only use these details to respond to your enquiry.</p></form>
       </section>
     </main>
-    <footer><a class="logo" href="#top"><img src="sle-logo.png" alt="Straight Line Electrical" /></a><p>Performance Auto Electrical<br />0431 186 347 · © 2026 Straight Line Electrical</p><a href="terms.html">Terms & Conditions</a><a href="#top">Back to top ↑</a></footer>
-    <script>
-      const instagramLink = document.querySelector('.instagram-link');
-      instagramLink.href = 'https://www.instagram.com/straightlineelectrical_sle?igsh=MTNyamVkM2VrYzFsZA==';
-      instagramLink.insertAdjacentHTML('afterend', '<a class="social-link facebook-link" href="https://www.facebook.com/p/Straight-Line-Electrical-61552702911637/" target="_blank" rel="noreferrer" aria-label="Follow Straight Line Electrical on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M13.7 8.3h1.8V5.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2V12H6.5v3.2h2.6v8.1h3.2v-8.1H15l.5-3.2h-3.3V9.8c0-.9.2-1.5 1.5-1.5Z"/></svg>Straight Line Electrical <span>↗</span></a>');
-    </script>
+
+    <footer class="customer-footer"><a class="customer-logo" href="#top"><img src="sle-logo.png" alt="Straight Line Electrical" /></a><p>Melbourne mobile auto electrician<br />Performance wiring · diagnostics · Haltech</p><div><a href="terms.html">Terms & Conditions</a><a href="#top">Back to top ↑</a></div></footer>
+
     <script src="cart.js"></script>
     <script src="product-data.js"></script>
     <script>
-      document.querySelectorAll('.product-grid .product').forEach(card => {
-        const sku = card.querySelector('.sku').textContent.split('·')[0].trim();
-        const product = (window.HALTECH_PRODUCTS || []).find(item => item.sku === sku);
-        const image = card.querySelector('img');
-        const productLink = document.createElement('a');
-        productLink.className = 'product-image-link';
-        productLink.href = `shop.html?sku=${encodeURIComponent(sku)}`;
-        productLink.setAttribute('aria-label', `View ${product ? product.name : sku} in the shop`);
-        image.replaceWith(productLink);
-        productLink.append(image);
-        if (!product) return;
-        const enquiry = card.querySelector('.product-info > a');
-        const actions = document.createElement('div');
-        actions.className = 'product-actions';
-        const addButton = document.createElement('button');
-        addButton.className = 'product-add';
-        addButton.type = 'button';
-        addButton.textContent = 'Add to cart';
-        addButton.addEventListener('click', () => { SLECart.add(product); addButton.textContent = 'Added ✓'; setTimeout(() => { addButton.textContent = 'Add to cart'; }, 1100); });
-        const detailsLink = document.createElement('a');
-        detailsLink.className = 'product-details-button';
-        detailsLink.href = `shop.html?sku=${encodeURIComponent(sku)}&details=1`;
-        detailsLink.textContent = 'Details';
-        enquiry.replaceWith(actions);
-        actions.append(addButton, detailsLink, enquiry);
-      });
+      const featuredSkus = ['HT-068000', 'HT-067010', 'HT-212000', 'HT-213000', 'HT-193000', 'HT-195000'];
+      const products = window.HALTECH_PRODUCTS || [];
+      const featured = document.querySelector('#featured-products');
+      featured.innerHTML = featuredSkus.map(sku => {
+        const product = products.find(item => item.sku === sku);
+        if (!product) return '';
+        const image = product.image ? `<img src="${product.image}" alt="${product.name}" loading="lazy" />` : `<img src="sle-logo.png" alt="Straight Line Electrical" />`;
+        return `<article class="featured-product"><a class="featured-image" href="shop.html?sku=${encodeURIComponent(product.sku)}&details=1" aria-label="View ${product.name} details">${image}</a><div><p>${product.sku}</p><h3>${product.name}</h3><strong>${product.price}</strong><div class="featured-actions"><button type="button" data-add-sku="${product.sku}">Add to cart</button><a href="shop.html?sku=${encodeURIComponent(product.sku)}&details=1">Details</a></div></div></article>`;
+      }).join('');
+      featured.addEventListener('click', event => { const button = event.target.closest('[data-add-sku]'); if (!button) return; const product = products.find(item => item.sku === button.dataset.addSku); if (!product) return; SLECart.add(product); button.textContent = 'Added ✓'; setTimeout(() => { button.textContent = 'Add to cart'; }, 1000); });
     </script>
   </body>
 </html>
