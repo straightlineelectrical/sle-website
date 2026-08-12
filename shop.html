@@ -36,14 +36,15 @@
       const detailPrice = document.querySelector('#detail-price');
       const detailDescription = document.querySelector('#detail-description');
       const detailSource = document.querySelector('#detail-source');
-      const initialSku = new URLSearchParams(window.location.search).get('sku');
-      const initialDetails = new URLSearchParams(window.location.search).get('details') === '1';
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialSku = urlParams.get('sku');
+      const initialDetails = urlParams.get('details') === '1';
       const sort = document.createElement('select');
       sort.id = 'product-sort';
       sort.setAttribute('aria-label', 'Sort products');
       sort.innerHTML = '<option value="price-desc">Price: High to Low</option><option value="price-asc">Price: Low to High</option><option value="name-asc">Name: A to Z</option>';
       document.querySelector('.catalog-tools').append(sort);
-      let selectedCategory = '';
+      let selectedCategory = urlParams.get('category') || '';
       let selectedSubcategory = '';
       const money = value => value;
       function card(product) {
